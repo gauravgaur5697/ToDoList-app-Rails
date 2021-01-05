@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= @todolist.Todo %>
+  </h1>
+  <p class="lead">
+    <%= @todolist.Time %> |
+    <%= @todolist.Date %> |
+    <%= @todolist.status %> |
+    <%= @todolist.important %>
+  </p>
+  <hr class="my-4">
+  <p class="lead">
+    <%= link_to 'Edit', edit_todolist_path(@todolist), class:"btn btn-outline-secondary" %> |
+<%= link_to 'Back', todolists_path, class:"btn btn-outline-dark" %>
+  </p>
+</div>

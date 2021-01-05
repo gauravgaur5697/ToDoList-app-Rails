@@ -1,0 +1,50 @@
+<%= form_with(model: todolist) do |form| %>
+  <% if todolist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(todolist.errors.count, "error") %> prohibited this todolist from being saved:</h2>
+
+      <ul>
+        <% todolist.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <% form.label :Todo %>
+    <%= form.text_field :Todo, class:"form-control", placeholder:"To Do" %>
+  </div>
+  <br/>
+
+  <div class="field form-group">
+    <% form.label :Time %>
+    <%= form.text_field :Time, class:"form-control", placeholder:"Time" %>
+  </div>
+  <br/>
+
+  <div class="field form-group">
+    <% form.label :Date %>
+    <%= form.text_field :Date, class:"form-control", placeholder:"Date" %>
+  </div>
+  <br/>
+
+  <div class="field form-group">
+    <% form.label :status %>
+    <%= form.text_field :status, class:"form-control", placeholder:"Status" %>
+  </div>
+  <br/>
+
+  <div class="field form-group">
+    <% form.label :important %>
+    <%= form.text_field :important, class:"form-control", placeholder:"Important" %>
+  </div>
+  <div class="field form-group">
+    <%= form.number_field :user_id, id: :todolist_user_id, class:"form-control", value:current_user.id, type: :hidden %>
+  </div>
+  <br/>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-outline-secondary" %>
+  </div>
+<% end %>

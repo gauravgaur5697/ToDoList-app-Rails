@@ -1,0 +1,44 @@
+
+<% if user_signed_in? %>
+
+  <table class="table  table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Todo</th>
+        <th>Time & Date</th>
+        <th>Status</th>
+        <th>Important</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @todolists.each do |todolist| %>
+      <% if todolist.user == current_user %>
+        <tr>
+          <td>
+            <%= link_to todolist.Todo, todolist %>
+          </td>
+          <td><%= todolist.Time %> ,
+            <%= todolist.Date %>
+          </td>
+          <td><%= todolist.status %></td>
+          <td><%= todolist.important %></td>
+          <td><%= link_to 'Delete', todolist, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm" %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Todolist', new_todolist_path, class:"btn btn-outline-secondary" %> 
+<% else %>
+
+<h1>Hey There!</h1>
+<p>Finally I have created my first ruby web page.
+You can make your to do list here.
+</p>
+<br/>
+<% end %>
